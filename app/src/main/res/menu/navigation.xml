@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@mipmap/ic_hh"
+        android:title="生成QR"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        />
+
+   <!-- <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@mipmap/icon_nearby_gray"
+        android:title="付款码"
+        android:enabled="true"
+        app:showAsAction="ifRoom"/>-->
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@mipmap/icon_my_gray"
+        android:title="扫描QR"
+        android:enabled="true"
+        app:showAsAction="ifRoom"/>
+
+</menu>
