@@ -207,7 +207,7 @@ public class SweepActivity extends Activity implements Callback {
             mediaPlayer.setOnCompletionListener(beepListener);
 
             AssetFileDescriptor file = getResources().openRawResourceFd(
-                    R.raw.s);
+                    R.raw.qzxing_s);
             try {
                 mediaPlayer.setDataSource(file.getFileDescriptor(),
                         file.getStartOffset(), file.getLength());
