@@ -3,6 +3,7 @@ package com.nio.cio.zxing;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.SurfaceView;
 import android.view.View;
@@ -38,6 +39,7 @@ public class SweepView extends FrameLayout {
     }
 
     private void init(final Context context) {
+        setFitsSystemWindows(true);
         sv = new SurfaceView(context);
         LayoutParams params = new LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -54,48 +56,53 @@ public class SweepView extends FrameLayout {
         lt.bottomMargin = 32;
         addView(layout, lt);
 
+        int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, getResources().getDisplayMetrics());
+        int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60, getResources().getDisplayMetrics());
 
         ImageButton flight_ib = new ImageButton(context);
         flight_ib.setBackgroundColor(0x00FFFFFF);
-        flight_ib.setImageResource(R.mipmap.ic_zxing_flight_s);
-        flight_ib.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        flight_ib.setImageResource(R.drawable.ic_baseline_flash_off_24);
+        flight_ib.setScaleType(ImageView.ScaleType.CENTER);
+        flight_ib.setPadding(margin, margin, margin, margin);
         flight_ib.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 ImageButton ib = (ImageButton) v;
                 if (isChecked) {
-                    ib.setImageResource(R.mipmap.ic_zxing_flight_s);
+                    ib.setImageResource(R.drawable.ic_baseline_flash_off_24);
                     isChecked = false;
                 } else {
-                    ib.setImageResource(R.mipmap.ic_zxing_flight);
+                    ib.setImageResource(R.drawable.ic_baseline_flash_on_24);
                     isChecked = true;
                 }
                 CameraManager.get().flashHandler();
 
             }
         });
+
         LinearLayout.LayoutParams check_lt = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layout.addView(flight_ib, check_lt);
         buttonAlbums = new ImageButton(context);
         buttonAlbums.setBackgroundColor(0x00FFFFFF);
-        buttonAlbums.setImageResource(R.mipmap.ic_zxing_photo);
+        buttonAlbums.setImageResource(R.drawable.ic_baseline_collections_24);
         buttonAlbums.setScaleType(ImageView.ScaleType.CENTER);
+        buttonAlbums.setPadding(margin, margin, margin, margin);
 
         LinearLayout.LayoutParams Albums_lt = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        Albums_lt.leftMargin = 16;
+        Albums_lt.leftMargin = margin;
         layout.addView(buttonAlbums, Albums_lt);
         back_ib = new ImageButton(context);
         back_ib.setBackgroundColor(0x00FFFFFF);
-        back_ib.setImageResource(R.mipmap.ic_zxing_delete);
-        back_ib.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        back_ib.setPadding(16, 16, 16, 16);
+        back_ib.setImageResource(R.drawable.ic_baseline_close_24);
+        back_ib.setScaleType(ImageView.ScaleType.FIT_XY);
+        back_ib.setPadding(margin, margin, margin, margin);
         LayoutParams back_lt = new LayoutParams(
-                112, 112);
+                size, size);
         back_lt.gravity = Gravity.TOP | Gravity.RIGHT;
-        back_lt.topMargin = 16;
-        back_lt.rightMargin = 16;
+        back_lt.topMargin = margin;
+        back_lt.rightMargin = margin;
         addView(back_ib, back_lt);
     }
 

@@ -21,6 +21,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
@@ -65,6 +66,8 @@ public class SweepActivity extends Activity implements Callback {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                               WindowManager.LayoutParams.FLAG_FULLSCREEN);
         sweepView = new SweepView(this);
         setContentView(sweepView);
 
