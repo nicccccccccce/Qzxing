@@ -1,5 +1,5 @@
 # Qzxing
-二维码直接扫码或者扫描本地存储的二维码图片、二维码生成、闪光灯
+二维码直接扫码或者扫描本地存储的二维码图片、二维码生成、闪光灯，用到读写相机权限需要自己加
 >
 调用
 ZxingUtils.IntentSweepSend(MainActivity.this);
